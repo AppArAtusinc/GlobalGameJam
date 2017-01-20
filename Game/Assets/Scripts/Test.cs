@@ -17,5 +17,11 @@ public class Test : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 		this.WaveEmiter.Emit(Tone.Red);
-	}
+
+        yield return new WaitForSeconds(1f);
+        this.WaveEmiter.Emit(Tone.Green);
+
+        yield return new WaitForSeconds(1f);
+        this.WaveEmiter.Emit(Tone.Red);
+    }
 }

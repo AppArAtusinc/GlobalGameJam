@@ -25,7 +25,7 @@ public class Target : MonoBehaviour
 		float progretion = 0.5f;
 		for (int i = 0; i < layers; i++)
 		{
-			var obstacle = this.ObstacleTemplate.Create<Obstacle>(new Vector3(0, -(initValue - 1), 0), this.transform);
+			var obstacle = this.ObstacleTemplate.Create<Obstacle>(Vector3.zero, this.transform);
 			obstacle.Tone = this.Tones.GetRandom();
 			obstacle.transform.localScale *= initValue;
 			initValue += progretion;
