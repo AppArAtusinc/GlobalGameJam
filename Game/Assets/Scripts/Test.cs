@@ -7,11 +7,6 @@ public class Test : MonoBehaviour
 
 	void Start()
 	{
-
-	}
-
-	void Update()
-	{
-
+		GameObject.CreatePrimitive(PrimitiveType.Cube);
 	}
 }
