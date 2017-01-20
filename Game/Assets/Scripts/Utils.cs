@@ -18,7 +18,7 @@ public static class Utils
 	public static GameObject Create(this GameObject @object, Vector3 position, Transform parent)
 	{
 		var gameObject = GameObject.Instantiate<GameObject>(@object, Vector3.zero, Quaternion.identity, parent);
-		gameObject.transform.localPosition = new Vector3(position.x, position.y, position.z);
+		gameObject.transform.localPosition = position;
 
 		return gameObject;
 	}

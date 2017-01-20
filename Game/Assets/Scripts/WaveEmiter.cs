@@ -24,7 +24,7 @@ public class WaveEmiter : MonoBehaviour
 			var emitor = GameObject.Instantiate<ParticleSystem>(this.System);
 			emitor.gameObject.transform.parent = this.transform;
 			emitor.gameObject.transform.localPosition = Vector3.zero;
-			emitor.gameObject.transform.rotation = Quaternion.identity;
+			emitor.gameObject.transform.rotation = Quaternion.Euler(90, 0, 0);
 			emitor.startColor = tone.ToColor();
 			return emitor;
 		}).ToArray();
@@ -39,6 +39,7 @@ public class WaveEmiter : MonoBehaviour
 	{
 		Emiters[tone].Emit(100);
 	}
+
 }
 
 
