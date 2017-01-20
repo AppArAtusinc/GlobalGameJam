@@ -7,10 +7,7 @@ using UnityEngine;
 public enum Tone
 {
 	Red,
-	Orange,
-	Yellow,
 	Green,
-	LightBlue,
 	Blue,
 	Purpure
 }
@@ -58,14 +55,8 @@ public static class WaveEmiterHelper
 		{
 			case Tone.Red:
 				return Color.red;
-			case Tone.Orange:
-				return new Color(255, 140, 0);
-			case Tone.Yellow:
-				return Color.yellow;
 			case Tone.Green:
 				return Color.green;
-			case Tone.LightBlue:
-				return new Color(0, 255, 250);
 			case Tone.Blue:
 				return Color.blue;
 			case Tone.Purpure:
