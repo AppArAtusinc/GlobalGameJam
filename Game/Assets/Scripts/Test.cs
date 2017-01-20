@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+	public WaveEmiter WaveEmiter;
+	public Target Target;
 
-	void Start()
+	IEnumerator Start()
 	{
-		GameObject.CreatePrimitive(PrimitiveType.Cube);
+		//this.Target.Setup(5);
+		this.WaveEmiter.Emit(Tone.Blue);
+
+		yield return new WaitForSeconds(1f);
+		this.WaveEmiter.Emit(Tone.Green);
+
+		yield return new WaitForSeconds(1f);
+		this.WaveEmiter.Emit(Tone.Red);
 	}
 }
