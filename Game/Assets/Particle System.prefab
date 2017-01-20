@@ -603,14 +603,14 @@ ParticleSystem:
         - serializedVersion: 2
           time: 0
           value: 0
-          inSlope: 1.5887712
-          outSlope: 1.5887712
+          inSlope: 2.1896796
+          outSlope: 2.1896796
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.9139715
-          value: 0.80840576
-          inSlope: 0.15467405
-          outSlope: 0.15467405
+          time: 0.85055685
+          value: 0.14715633
+          inSlope: -0.71034086
+          outSlope: -0.71034086
           tangentMode: 0
         - serializedVersion: 2
           time: 1
@@ -2181,7 +2181,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     m_EnergyLossOnCollision:
-      scalar: 0
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2221,7 +2221,7 @@ ParticleSystem:
       minMaxState: 0
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.6
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -2339,7 +2339,7 @@ ParticleSystem:
       minMaxState: 0
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     lifetime:
       scalar: 1

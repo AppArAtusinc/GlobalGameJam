@@ -6,9 +6,13 @@ using UnityEngine;
 
 public enum Tone
 {
-	Blue,
+	Red,
+	Orange,
+	Yellow,
 	Green,
-	Red
+	LightBlue,
+	Blue,
+	Purpure
 }
 
 public class WaveEmiter : MonoBehaviour
@@ -29,9 +33,8 @@ public class WaveEmiter : MonoBehaviour
 		}).ToArray();
 
 		Emiters = new Dictionary<Tone, ParticleSystem>();
-		Emiters[Tone.Blue] = emiters[0];
-		Emiters[Tone.Green] = emiters[1];
-		Emiters[Tone.Red] = emiters[2];
+		for (int i = 0; i < Utils.Tones.Length; i++)
+			Emiters[(Tone)i] = emiters[i];
 	}
 
 	public void Emit(Tone tone)
@@ -53,12 +56,20 @@ public static class WaveEmiterHelper
 	{
 		switch (tone)
 		{
-			case Tone.Blue:
-				return Color.blue;
-			case Tone.Green:
-				return Color.green;
 			case Tone.Red:
 				return Color.red;
+			case Tone.Orange:
+				return new Color(255, 140, 0);
+			case Tone.Yellow:
+				return Color.yellow;
+			case Tone.Green:
+				return Color.green;
+			case Tone.LightBlue:
+				return new Color(0, 255, 250);
+			case Tone.Blue:
+				return Color.blue;
+			case Tone.Purpure:
+				return new Color(255, 0, 255);
 			default:
 				throw new NotSupportedException();
 		}

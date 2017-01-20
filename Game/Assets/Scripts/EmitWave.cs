@@ -19,7 +19,7 @@ public class EmitWave : MonoBehaviour
 
 	private Tone CalculateTone(float lastWaveTime)
 	{
-		const float maxDelay = 2;
+		const float maxDelay = 2f;
 		var toneCount = Utils.Tones.Length;
 		var delta = maxDelay / toneCount;
 
