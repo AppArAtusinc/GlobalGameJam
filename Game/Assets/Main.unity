@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &288226808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 739655358}
   - component: {fileID: 739655357}
   - component: {fileID: 739655359}
+  - component: {fileID: 739655360}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -360,6 +361,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   System: {fileID: 198294520673319486, guid: d8db7fd63e6b66e41a9d909a20278ada, type: 2}
+--- !u!114 &739655360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 739655356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79739553d9c65d14c98a2a87312ca83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveEmiter: {fileID: 739655359}
 --- !u!1 &1707775369
 GameObject:
   m_ObjectHideFlags: 0

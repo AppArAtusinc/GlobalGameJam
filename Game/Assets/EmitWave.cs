@@ -1,47 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmitWave : MonoBehaviour {
+public class EmitWave : MonoBehaviour
+{
+	public WaveEmiter WaveEmiter;
+	float lastWaveTime;
 
-    ParticleSystem [] PS;
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space))
+		{
+			this.WaveEmiter.Emit(this.CalculateTone(Time.time - lastWaveTime));
+			lastWaveTime = Time.time;
+		}
+	}
 
-    float lastWaveTime = -1;
+	private Tone CalculateTone(float lastWaveTime)
+	{
+		const float maxDelay = 2;
+		var toneCount = Utils.Tones.Length;
+		var delta = maxDelay / toneCount;
 
-    const float maxWaveLength = 2;
-
-    private void Awake()
-    {
-        PS = GetComponentsInChildren<ParticleSystem>();
-    }
-	
-	void Update ()
-    {
-	    if(Input.GetMouseButtonDown(0)||(Input.touchCount>0 && Input.touches[0].phase == TouchPhase.Began ) || Input.GetKeyDown(KeyCode.Space))
-        {
-            if (lastWaveTime != -1)
-            {
-                if(Time.time - lastWaveTime < maxWaveLength)
-                {
-                    foreach (var item in PS)
-                    {
-                        item.startColor = Color.HSVToRGB((Time.time - lastWaveTime) / maxWaveLength, .8f, .8f);
-                    }
-                }
-                else
-                {
-                    foreach (var item in PS)
-                    {
-                        item.startColor = new Color(1, 1, 1);
-                    }
-                }
-
-            }
-            foreach (var item in PS)
-            {
-                item.Emit(300);
-            }
-            lastWaveTime = Time.time;
-        }	
+		return (Tone)(int)(Mathf.Clamp(lastWaveTime / delta, 0, toneCount - 1));
 	}
 }

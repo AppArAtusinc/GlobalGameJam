@@ -1,8 +1,20 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public static class Utils
 {
+	public static Tone[] Tones
+	{
+		get;
+		private set;
+	}
+
+	static Utils()
+	{
+		Tones = Enum.GetValues(typeof(Tone)).Cast<Tone>().ToArray();
+	}
+
 	private static System.Random Random = new System.Random();
 
 	public static TValue GetRandom<TValue>(this TValue[] list)

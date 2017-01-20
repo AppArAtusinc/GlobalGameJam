@@ -18,8 +18,7 @@ public class WaveEmiter : MonoBehaviour
 
 	private void Awake()
 	{
-		var tones = new[] { Tone.Blue, Tone.Green, Tone.Red };
-		var emiters = tones.Select(tone =>
+		var emiters = Utils.Tones.Select(tone =>
 		{
 			var emitor = GameObject.Instantiate<ParticleSystem>(this.System);
 			emitor.gameObject.transform.parent = this.transform;

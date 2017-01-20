@@ -7,11 +7,9 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
 	public GameObject ObstacleTemplate;
-	private Tone[] Tones;
 
 	private void Awake()
 	{
-		this.Tones = Enum.GetValues(typeof(Tone)).Cast<Tone>().ToArray();
 	}
 
 	private void Start()
@@ -26,7 +24,7 @@ public class Target : MonoBehaviour
 		for (int i = 0; i < layers; i++)
 		{
 			var obstacle = this.ObstacleTemplate.Create<Obstacle>(new Vector3(0, -(initValue - 1), 0), this.transform);
-			obstacle.Tone = this.Tones.GetRandom();
+			obstacle.Tone = Utils.Tones.GetRandom();
 			obstacle.transform.localScale *= initValue;
 			initValue += progretion;
 		}
