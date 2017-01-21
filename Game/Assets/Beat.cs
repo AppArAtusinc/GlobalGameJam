@@ -6,11 +6,14 @@ public class Beat : MonoBehaviour {
 
 	ParticleSystem PS;
 	AudioSource AS;
+    EmitterColor EC;
+
 	float frequency;
 	bool playNow=true;
 
 	private void Awake()
 	{
+        EC = GetComponent<EmitterColor>();
 		AS = GetComponent<AudioSource>();
 		PS = GetComponent<ParticleSystem>();
 		frequency = GetComponent<AudioSource>().clip.length;
@@ -27,7 +30,7 @@ public class Beat : MonoBehaviour {
 		while (true)
 		{
 			playNow = UnityEngine.Random.value > .5f;
-			PS.startColor = Color.HSVToRGB(frequency, 1, .8f);
+            EC.particleColor = frequency > .3 ? frequency > .7 ? Tone.Blue : Tone.Green : Tone.Red;
 			AS.mute = !playNow;
 			if (playNow)
 			{

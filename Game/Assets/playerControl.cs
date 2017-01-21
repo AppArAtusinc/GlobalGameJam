@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerControl : MonoBehaviour
 {
-	public float playerSpeed;
+	public float playerSpeed, playerRotationSpeed;
 	Transform TR;
 
 	private void Awake()
@@ -15,6 +15,11 @@ public class playerControl : MonoBehaviour
 	void Update()
 	{
 		TR.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))* playerSpeed * Time.deltaTime;
-		TR.LookAt(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
+
+        Vector3 mouseWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+
+        float step = playerRotationSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(TR.rotation, Quaternion.LookRotation((mouseWorldPoint - TR.position).normalized, TR.up), step);
+
 	}
 }

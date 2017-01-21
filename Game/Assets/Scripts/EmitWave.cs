@@ -12,7 +12,7 @@ public class EmitWave : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space))
 		{
-			this.WaveEmiter.Emit(this.CalculateTone(Time.time - lastWaveTime));
+			//this.WaveEmiter.Emit(this.CalculateTone(Time.time - lastWaveTime));
 			lastWaveTime = Time.time;
 		}
 	}
