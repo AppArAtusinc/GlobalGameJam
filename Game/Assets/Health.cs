@@ -4,18 +4,18 @@ using UnityEngine;
 
 public abstract class Health : MonoBehaviour {
 
-    const float MAX_HEALTH = 100;
+    protected const float MAX_HEALTH = 100;
 
     protected float health;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         health = MAX_HEALTH;
     }
 
 
 
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         health -= damage;
 

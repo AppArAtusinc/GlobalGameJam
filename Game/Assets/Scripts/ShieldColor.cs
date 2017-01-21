@@ -14,6 +14,10 @@ public class ShieldColor : MonoBehaviour {
 
     public bool isPlayer = false;
 
+    public float shieldRechargeTime = 3;
+
+    float chargeLevel = 0;
+
     ParticleSystem[] PS;
 
     private void Awake()
@@ -28,8 +32,12 @@ public class ShieldColor : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) &&isPlayer)
+        chargeLevel += Time.deltaTime;
+        UiManager.instance.SetShieldLevel(chargeLevel / shieldRechargeTime);
+
+        if(Input.GetKeyDown(KeyCode.Space) &&isPlayer && chargeLevel>=1)
         {
+            chargeLevel = 0;
             SwitchShield();
         }
     }
@@ -38,10 +46,12 @@ public class ShieldColor : MonoBehaviour {
     {
         switch (shieldColor)
         {
-            case (Tone.Red): shieldColor = Tone.Green; break;
-            case (Tone.Green): shieldColor = Tone.Blue; break;
-            case (Tone.Blue): shieldColor = Tone.Red; break;
+            case (Tone.Red): shieldColor = Tone.Green; UiManager.instance.SetShieldColor(Color.green); break;
+            case (Tone.Green): shieldColor = Tone.Blue; UiManager.instance.SetShieldColor(Color.blue); break;
+            case (Tone.Blue): shieldColor = Tone.Red; UiManager.instance.SetShieldColor(Color.red); break;
         }
+
+
         ChangeColor();
     }
 
