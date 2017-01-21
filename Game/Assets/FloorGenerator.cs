@@ -10,7 +10,6 @@ public class FloorGenerator : MonoBehaviour
 
 	private void Start()
 	{
-
 		const float HorizontalShift = 1.02f;
 		const float VerticalShift = 0.771f;
 		var transform = this.transform;
