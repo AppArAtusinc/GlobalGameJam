@@ -25,7 +25,7 @@ public class EmitterColor : MonoBehaviour {
         CM.collidesWith = 0;
         CM.collidesWith |= (1 << (LayerMask.NameToLayer("Player")));
         CM.collidesWith |= (1 << (LayerMask.NameToLayer("Enemy")));
-        CM.collidesWith |= (1 << (LayerMask.NameToLayer("Environment")));
+        CM.collidesWith |= (1 << (LayerMask.NameToLayer("Obstacle")));
 
         switch (particleColor)
         {
