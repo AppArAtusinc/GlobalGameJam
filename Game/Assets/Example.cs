@@ -2,6 +2,14 @@
 
 public class Example : MonoBehaviour, AudioProcessor.AudioCallbacks
 {
+
+    ParticleSystem PS;
+
+    private void Awake()
+    {
+        PS = GetComponent<ParticleSystem>();
+    }
+
     void Start()
     {
         //Select the instance of AudioProcessor and pass a reference
@@ -19,6 +27,7 @@ public class Example : MonoBehaviour, AudioProcessor.AudioCallbacks
     public void onOnbeatDetected()
     {
         Debug.Log("Beat!!!");
+        PS.Emit(100);
     }
 
     public void onSpectrum(float[] spectrum)
