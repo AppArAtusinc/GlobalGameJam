@@ -6,8 +6,9 @@ public class KillPlayer : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Heh");
-        other.GetComponent<Animator>().SetTrigger("Die");
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            other.gameObject.GetComponent<PlayerHealth>().Die();
+        }
     }
-
 }

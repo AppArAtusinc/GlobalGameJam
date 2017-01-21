@@ -22,24 +22,27 @@ public class EmitterColor : MonoBehaviour {
     public void ChangeColor()
     {
         ParticleSystem.CollisionModule CM = PS.collision;
-        CM.collidesWith = (1 << LayerMask.NameToLayer("Player"));
+        CM.collidesWith = 0;
+        CM.collidesWith |= (1 << (LayerMask.NameToLayer("Player")));
+        CM.collidesWith |= (1 << (LayerMask.NameToLayer("Enemy")));
+
         switch (particleColor)
         {
             case (Tone.Red):
                 {
-                    CM.collidesWith = (1 << LayerMask.NameToLayer("RedShield"));
+                    CM.collidesWith |= (1 << (LayerMask.NameToLayer("RedShield")));
                     PS.startColor = Color.red;
                     break;
                 }
             case (Tone.Green):
                 {
-                    CM.collidesWith = (1 << LayerMask.NameToLayer("GreenShield"));
+                    CM.collidesWith |= (1 << LayerMask.NameToLayer("GreenShield"));
                     PS.startColor = Color.green;
                     break;
                 }
             case (Tone.Blue):
                 {
-                    CM.collidesWith = (1 << LayerMask.NameToLayer("BlueShield"));
+                    CM.collidesWith |= (1 << LayerMask.NameToLayer("BlueShield"));
                     PS.startColor = Color.blue;
                     break;
                 }
