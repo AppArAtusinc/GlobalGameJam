@@ -30,3 +30,4 @@ sysinfo.txt
 *.unitypackage
 /Game/Library
 /Game/Temp
+Game/build/
