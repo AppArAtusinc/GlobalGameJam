@@ -13,8 +13,6 @@ public abstract class Health : MonoBehaviour {
         health = MAX_HEALTH;
     }
 
-
-
     public virtual void Damage(float damage)
     {
         health -= damage;
@@ -28,7 +26,6 @@ public abstract class Health : MonoBehaviour {
     }
 
     public abstract void Die();
-
 
     public void OnDeath()
     {

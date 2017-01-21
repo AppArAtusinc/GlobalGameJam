@@ -22,12 +22,12 @@ public static class Utils
 		return list[Random.Next(0, list.Length)];
 	}
 
-	public static TGameObject Create<TGameObject>(this GameObject gameObject, Vector3 position, Transform parent)
+	public static TGameObject Create<TGameObject>(this GameObject gameObject, Vector3 position, Transform parent = null)
 	{
 		return gameObject.Create(position, parent).GetComponent<TGameObject>();
 	}
 
-	public static GameObject Create(this GameObject @object, Vector3 position, Transform parent)
+	public static GameObject Create(this GameObject @object, Vector3 position, Transform parent = null)
 	{
 		var gameObject = GameObject.Instantiate<GameObject>(@object, Vector3.zero, Quaternion.identity, parent);
 		gameObject.transform.localPosition = position;
