@@ -42,7 +42,7 @@ public class Beat : MonoBehaviour {
 			AS.mute = !playNow;
 			if (playNow)
 			{
-				PS.Emit(1000);
+				PS.Emit(500);
 			}
 			yield return new WaitForSeconds(frequency);
 		}
