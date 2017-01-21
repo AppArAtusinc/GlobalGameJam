@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class EnemyHealth : Health {
 
+	public event Action<EnemyHealth> OnDeath;
+
     public override void Die()
     {
-        Destroy(transform.parent.parent.gameObject);
+		if (this.OnDeath != null)
+			this.OnDeath(this);
+
+		Destroy(this.transform.parent.parent.gameObject);
     }
 }
