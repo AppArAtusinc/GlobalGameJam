@@ -24,10 +24,7 @@ public class CameraController : MonoBehaviour
 			return;
 		}
 
-		var playerPosition = this.Player.transform.position;
-		var direction = playerPosition.normalized;
-
-		var cameraPosition = direction * playerPosition.magnitude / 10;
+		var cameraPosition = this.Player.transform.position;
 
 		cameraPosition.y = 10;
 		this.Camera.transform.position = cameraPosition;
