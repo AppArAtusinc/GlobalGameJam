@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Heal : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionStay(Collision collision)
+    {
+        print("APtechka");
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Health>().Damage(-2);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        print("APtechka");
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<Health>().Damage(-2);
+        }
+    }
+
 }
