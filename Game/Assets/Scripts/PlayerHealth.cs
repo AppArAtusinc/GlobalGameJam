@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : Health {
 
-    public void OnDeath()
+    public override void Die()
     {
-        gameObject.SetActive(false);
+        GetComponent<Animator>().SetTrigger("Die");
     }
+
+
 
 }

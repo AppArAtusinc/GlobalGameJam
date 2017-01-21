@@ -25,7 +25,15 @@ public class Beat : MonoBehaviour {
 		StartCoroutine(Emit());	
 	}
 
-	private IEnumerator Emit()
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.tag == "Player" || other.tag == "Enemy")
+        {
+            other.GetComponent<Health>().Damage(.5f);
+        }
+    }
+
+    private IEnumerator Emit()
 	{
 		while (true)
 		{
