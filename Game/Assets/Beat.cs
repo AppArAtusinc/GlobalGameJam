@@ -7,7 +7,6 @@ public class Beat : MonoBehaviour {
 	ParticleSystem PS;
 	AudioSource AS;
 	float frequency;
-
 	bool playNow=true;
 
 	private void Awake()
@@ -32,7 +31,7 @@ public class Beat : MonoBehaviour {
 			AS.mute = !playNow;
 			if (playNow)
 			{
-				PS.Emit(100);
+				PS.Emit(1000);
 			}
 			yield return new WaitForSeconds(frequency);
 		}
