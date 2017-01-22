@@ -51,8 +51,8 @@ public class Spawner : MonoBehaviour
 	private IEnumerator SpawnPlayer()
 	{
 		this.AudioSource.Play();
-		yield return new WaitForSeconds(this.AudioSource.clip.length);
-
+        //yield return new WaitForSeconds(this.AudioSource.clip.length);
+        yield return new WaitForEndOfFrame();
 		this.player = this.PlayerTemplate.Create(this.GetPossiblePosition());
 		foreach (Transform child in player.transform)
 			child.parent = null;

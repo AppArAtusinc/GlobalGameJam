@@ -16,7 +16,7 @@ public class ShieldFollowPlayer : MonoBehaviour {
 
     void Update ()
     {
-        TR.position = player.position + player.forward * 1.5f;
+        TR.position = player.position + player.forward * 0.7f;
         TR.rotation = player.rotation;	
 	}
 }

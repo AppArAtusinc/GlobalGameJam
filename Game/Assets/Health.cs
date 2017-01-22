@@ -17,6 +17,8 @@ public abstract class Health : MonoBehaviour {
     {
         health -= damage;
 
+        health = Mathf.Clamp(health, 0, MAX_HEALTH);
+
         Debug.LogFormat("{0} Health = {1}",gameObject.name, health);
 
         if (health <= 0)
