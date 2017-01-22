@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1823929533743340
 GameObject:
   m_ObjectHideFlags: 1
@@ -287,11 +287,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6f0bef4ca47082845b77a32311d740e2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: b2777b8dfe3567f4497599b9c8123d0c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -535,7 +535,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 289527450
+  randomSeed: -463733363
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3076,7 +3076,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1718967842
+  randomSeed: -1553711831
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5659,7 +5659,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2084549435
+  randomSeed: -764936924
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8296,7 +8296,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -236690758
+  randomSeed: 1247409666
   InitialModule:
     serializedVersion: 3
     enabled: 1
