@@ -51,7 +51,7 @@ public class FloorGenerator : MonoBehaviour
 			var baseHexes = Enumerable.Range(0, 10).
 				Select(o => this.arenaHexes.GetRandom()).
 				Where(hex => enities.
-					All(enity => Vector3.Distance(enity.transform.position, hex.transform.position) > 1));
+					All(enity => Vector3.Distance(enity.transform.position, hex.transform.position) > 3));
 
 			var hexes = baseHexes.SelectMany(o =>
 			{
