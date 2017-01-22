@@ -30,7 +30,7 @@ public class Beat : MonoBehaviour {
         if(other.tag == "Player" || other.tag == "Enemy")
         {
             other.GetComponent<Health>().Damage(.5f);
-        }
+		}
     }
 
     private IEnumerator Emit()
@@ -39,7 +39,6 @@ public class Beat : MonoBehaviour {
 		{
 			playNow = UnityEngine.Random.value > .5f;
             EC.particleColor = frequency > .3 ? frequency > .7 ? Tone.Blue : Tone.Green : Tone.Red;
-			AS.mute = !playNow;
 			if (playNow)
 			{
 				PS.Emit(500);
