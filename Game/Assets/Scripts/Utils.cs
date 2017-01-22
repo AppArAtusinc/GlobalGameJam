@@ -33,9 +33,10 @@ public static class Utils
 		return gameObject.Create(position, parent).GetComponent<TGameObject>();
 	}
 
-	public static GameObject Create(this GameObject @object, Vector3 position, Transform parent = null)
+	public static GameObject Create(this GameObject obj, Vector3 position, Transform parent = null)
 	{
-		var gameObject = GameObject.Instantiate<GameObject>(@object, Vector3.zero, Quaternion.identity, parent);
+        GameObject gameObject = (GameObject)GameObject.Instantiate<GameObject>(obj, Vector3.zero, Quaternion.identity,parent);
+
 		gameObject.transform.localPosition = position;
 
 		return gameObject;
