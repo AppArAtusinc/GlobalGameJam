@@ -35,8 +35,7 @@ public static class Utils
 
 	public static GameObject Create(this GameObject obj, Vector3 position, Transform parent = null)
 	{
-        GameObject gameObject = (GameObject)GameObject.Instantiate<GameObject>(obj, Vector3.zero, Quaternion.identity,parent);
-
+        GameObject gameObject = GameObject.Instantiate<GameObject>(obj, Vector3.zero, Quaternion.identity,parent);
 		gameObject.transform.localPosition = position;
 
 		return gameObject;
