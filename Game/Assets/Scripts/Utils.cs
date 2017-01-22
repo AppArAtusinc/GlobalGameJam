@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ public static class Utils
 	public static TValue GetRandom<TValue>(this TValue[] list)
 	{
 		return list[Random.Next(0, list.Length)];
+	}
+
+	public static TValue GetRandom<TValue>(this List<TValue> list)
+	{
+		return list[Random.Next(0, list.Count)];
 	}
 
 	public static TGameObject Create<TGameObject>(this GameObject gameObject, Vector3 position, Transform parent = null)

@@ -2990,8 +2990,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Width: 80
   Height: 80
-  HexTemplate: {fileID: 1668036040852706, guid: 7be5d581127658541886cc3b7d99ecf4,
+  HexTemplate: {fileID: 1724871728982294, guid: c86a283da95541f41be7162fce381695,
     type: 2}
+  HexGrowSpeed: 1
+  HexChangeCooldown: 5
 --- !u!4 &586743524
 Transform:
   m_ObjectHideFlags: 0
