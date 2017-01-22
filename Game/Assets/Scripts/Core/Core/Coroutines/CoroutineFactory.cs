@@ -6,11 +6,17 @@ namespace Core
 {
 	public static class CoroutineFactory
 	{
-		private static CoroutineHolderComponent CoroutineHolder;
+		private static CoroutineHolderComponent coroutineHolderComponent;
 
-		static CoroutineFactory()
+		private static CoroutineHolderComponent CoroutineHolder
 		{
-			CoroutineHolder = new GameObject("~Coroutine").AddComponent<CoroutineHolderComponent>();
+			get
+			{
+				if (coroutineHolderComponent == null)
+					coroutineHolderComponent = new GameObject("~Coroutine").AddComponent<CoroutineHolderComponent>();
+
+				return coroutineHolderComponent;
+			}
 		}
 
 		public static CoroutineTask Run(IEnumerator coroutine)
@@ -30,6 +36,11 @@ namespace Core
 		public static void Stop(IEnumerator coroutine)
 		{
 			CoroutineHolder.StopCoroutine(coroutine);
+		}
+
+		public static void StopAll()
+		{
+			CoroutineHolder.StopAllCoroutines();
 		}
 	}
 }
