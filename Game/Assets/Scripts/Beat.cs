@@ -34,7 +34,7 @@ public class Beat : MonoBehaviour {
     {
         if(other.tag == "Player" || other.tag == "Enemy")
         {
-            other.GetComponent<Health>().Damage(5f);
+            other.GetComponent<Health>().Damage(.5f);
         }
     }
 

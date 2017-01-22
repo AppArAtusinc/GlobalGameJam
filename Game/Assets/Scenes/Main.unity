@@ -138,8 +138,7 @@ MonoBehaviour:
   - {fileID: 1461652499535132, guid: eab1984a434efb64cad2ad0e562ec0d1, type: 2}
   NormalEnimies: []
   EasyEnimies:
-  - {fileID: 1461652499535132, guid: 22e03d985c5de624faed6cd34e1701e1, type: 2}
-  - {fileID: 1461652499535132, guid: 4be36c82b6970674fa83a9de2f97ed39, type: 2}
+  - {fileID: 1090403389349438, guid: 22e03d985c5de624faed6cd34e1701e1, type: 2}
   UseEasy: 5
   UseNormal: 0
   EnemyNumber: 10
