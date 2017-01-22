@@ -13,6 +13,8 @@ public class FloorGenerator : MonoBehaviour
 		const float HorizontalShift = 1.02f;
 		const float VerticalShift = 0.771f;
 		var transform = this.transform;
+		var redColor = GameObject.Instantiate<Material>(this.HexTemplate.GetComponentInChildren<MeshRenderer>().sharedMaterial);
+		redColor.color = Color.red;
 
 		for (int i = 0; i < this.Width; i++)
 			for (int j = 0; j < this.Height; j++)
@@ -21,9 +23,10 @@ public class FloorGenerator : MonoBehaviour
 				if (Vector3.Distance(hex.transform.position, Vector3.zero) > 20)
 				{
 					hex.transform.localScale = new Vector3(1, Random.value * 3 + 8, 1);
-					hex.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+					hex.GetComponentInChildren<MeshRenderer>().material = redColor;
 				}
 			}
+
 	}
 
 }
