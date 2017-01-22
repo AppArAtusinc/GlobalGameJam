@@ -35,8 +35,7 @@ public class ShieldColor : MonoBehaviour
 	{
 		chargeLevel += Time.deltaTime;
 		UiManager.instance.SetShieldLevel(chargeLevel / shieldRechargeTime);
-
-		if (Input.GetKeyDown(KeyCode.Space) && isPlayer && chargeLevel >= 1)
+		if (Input.GetKeyDown(KeyCode.Space) && isPlayer && chargeLevel/shieldRechargeTime >= 1)
 		{
 			chargeLevel = 0;
 			SwitchShield();
