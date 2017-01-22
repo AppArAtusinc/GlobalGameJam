@@ -9,6 +9,15 @@ public class UiManager : MonoBehaviour {
 
     public Image healthManager;
 
+    int _score;
+    public int score
+    {
+        get { return _score; }
+        set { _score = value; ChangeScore(); }
+    }
+
+
+    public Text scoreText;
 
     Text healthText;
 
@@ -23,6 +32,13 @@ public class UiManager : MonoBehaviour {
         instance = this;
         healthText = healthManager.GetComponentInChildren<Text>();
         shieldLevels = shieldManager.GetComponentsInChildren<Image>();
+
+        score = 0;
+    }
+
+    void ChangeScore()
+    {
+        scoreText.text = "Score : "+score;
     }
 
     public void SetShieldColor(Color color)

@@ -8,7 +8,7 @@ public class Beat : MonoBehaviour {
 	AudioSource AS;
     EmitterColor EC;
 
-	float frequency;
+	public float frequency = 1, arcSize;
 	bool playNow=true;
 
 	private void Awake()
@@ -16,11 +16,14 @@ public class Beat : MonoBehaviour {
         EC = GetComponent<EmitterColor>();
 		AS = GetComponent<AudioSource>();
 		PS = GetComponent<ParticleSystem>();
-		frequency = GetComponent<AudioSource>().clip.length;
-	}
+        EC.particleColor = frequency > .3 ? frequency > .7 ? Tone.Blue : Tone.Green : Tone.Red;
+        ParticleSystem.ShapeModule shape = PS.shape;
+        shape.arc = arcSize;
+    }
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
 	{
 		StartCoroutine(Emit());	
 	}
@@ -38,7 +41,6 @@ public class Beat : MonoBehaviour {
 		while (true)
 		{
 			playNow = UnityEngine.Random.value > .5f;
-            EC.particleColor = frequency > .3 ? frequency > .7 ? Tone.Blue : Tone.Green : Tone.Red;
 			AS.mute = !playNow;
 			if (playNow)
 			{

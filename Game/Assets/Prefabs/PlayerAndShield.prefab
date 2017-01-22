@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 70
-  playerRotationSpeed: 150
+  playerRotationSpeed: 180
   FootstepCooldown: 0.4
   Steps:
   - {fileID: 8300000, guid: fa0a50e154259da4bbdce34ac7ae1433, type: 3}
@@ -433,7 +433,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 803986498
+  randomSeed: 1568691934
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3070,7 +3070,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1403995791
+  randomSeed: -108398862
   InitialModule:
     serializedVersion: 3
     enabled: 1

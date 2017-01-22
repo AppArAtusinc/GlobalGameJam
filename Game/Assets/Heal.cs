@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class Heal : MonoBehaviour {
 
-    private void OnCollisionStay(Collision collision)
+    ParticleSystem PS;
+
+    float healthCapacity;
+    const float MAX_HEALTH_CAPACITY = 25;
+    private void Awake()
     {
-        print("APtechka");
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<Health>().Damage(-2);
-        }
+        PS = GetComponent<ParticleSystem>();
+    }
+
+    private void OnEnable()
+    {
+        healthCapacity = 25;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        print("APtechka");
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Health>().Damage(-2);
+            PS.emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0, (short)(200 * healthCapacity/MAX_HEALTH_CAPACITY), (short)(300 * healthCapacity / MAX_HEALTH_CAPACITY)) });
+            other.gameObject.GetComponent<Health>().Damage(-5 * Time.deltaTime);
+            UiManager.instance.score += 10;
+            healthCapacity += -5 * Time.deltaTime;
+            if (healthCapacity <= 0) gameObject.SetActive(false);
         }
     }
 
