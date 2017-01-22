@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class Beat : MonoBehaviour {
@@ -8,15 +8,18 @@ public class Beat : MonoBehaviour {
 	AudioSource AS;
     EmitterColor EC;
 
-	public float frequency = 1, arcSize;
-	bool playNow=true;
+	public float arcSize;
+    float frequency = 1;
+
+    bool playNow=true;
 
 	private void Awake()
 	{
+        frequency = Random.Range(.7f, 2.3f);
         EC = GetComponent<EmitterColor>();
 		AS = GetComponent<AudioSource>();
 		PS = GetComponent<ParticleSystem>();
-        EC.particleColor = frequency > .3 ? frequency > .7 ? Tone.Blue : Tone.Green : Tone.Red;
+        EC.particleColor = frequency > 1 ? frequency > 2 ? Tone.Blue : Tone.Green : Tone.Red;
         ParticleSystem.ShapeModule shape = PS.shape;
         shape.arc = arcSize;
     }
