@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 public class Beat : MonoBehaviour {
@@ -35,7 +34,7 @@ public class Beat : MonoBehaviour {
     {
         if(other.tag == "Player" || other.tag == "Enemy")
         {
-            other.GetComponent<Health>().Damage(.5f);
+            other.GetComponent<Health>().Damage(5f);
         }
     }
 
@@ -44,17 +43,12 @@ public class Beat : MonoBehaviour {
 		while (true)
 		{
 			playNow = UnityEngine.Random.value > .5f;
-			AS.mute = !playNow;
 			if (playNow)
 			{
+				AS.Play();
 				PS.Emit(500);
 			}
 			yield return new WaitForSeconds(frequency);
 		}
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
