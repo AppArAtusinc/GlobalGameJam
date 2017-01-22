@@ -92,7 +92,7 @@ public class ShieldColor : MonoBehaviour
 
 	private void OnParticleCollision(GameObject other)
 	{
-		if (!this.AudioSource.isPlaying)
+		if (this.AudioSource && !this.AudioSource.isPlaying)
 			this.AudioSource.Play();
 	}
 }
