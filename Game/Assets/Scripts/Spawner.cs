@@ -47,12 +47,18 @@ public class Spawner : MonoBehaviour
 	private void Spawn(GameObject enemyTemplate)
 	{
 		this.enimiesOnArena++;
-		var position = new Vector3(UnityEngine.Random.value * 15, 0, UnityEngine.Random.value * 15);
-		while (Vector3.Distance(this.player.transform.position, position) < 2)
-			position = new Vector3(UnityEngine.Random.value * 15, 0, UnityEngine.Random.value * 15);
+		var enimies = GameObject.FindObjectsOfType<EnemyHealth>();
+		var position = this.GetPossiblePosition();
+		while (Vector3.Distance(this.player.transform.position, position) < 3 || enimies.Any(o => Vector3.Distance(o.transform.position, position) < 2))
+			position = this.GetPossiblePosition();
 
 		var enemy = enemyTemplate.Create(position).GetComponentInChildren<EnemyHealth>();
 		enemy.OnDeath += this.Enemy_OnDeath;
+	}
+
+	private Vector3 GetPossiblePosition()
+	{
+		return new Vector3(UnityEngine.Random.value * 30 - 15, 0, UnityEngine.Random.value * 30 - 15);
 	}
 
 	private void Enemy_OnDeath(EnemyHealth enemy)
