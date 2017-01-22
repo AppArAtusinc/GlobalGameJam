@@ -287,11 +287,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6f0bef4ca47082845b77a32311d740e2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: b2777b8dfe3567f4497599b9c8123d0c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd3eb55b5c129b43a9628feaa5e8712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_HEALTH: 300
+  MAX_HEALTH: 100
 --- !u!135 &135709996444580784
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -535,7 +535,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -374809009
+  randomSeed: 1727286787
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3076,7 +3076,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -168961553
+  randomSeed: 170351401
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8296,7 +8296,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1923056535
+  randomSeed: 1372226627
   InitialModule:
     serializedVersion: 3
     enabled: 1
