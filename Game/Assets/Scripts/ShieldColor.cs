@@ -5,89 +5,94 @@ using UnityEngine;
 
 public enum Tone
 {
-    Red,
-    Green,
-    Blue
+	Red,
+	Green,
+	Blue
 }
 
-public class ShieldColor : MonoBehaviour {
+public class ShieldColor : MonoBehaviour
+{
 
-    public bool isPlayer = false;
+	public bool isPlayer = false;
+	public float shieldRechargeTime = 3;
+	float chargeLevel = 0;
 
-    public float shieldRechargeTime = 3;
+	ParticleSystem[] PS;
 
-    float chargeLevel = 0;
-
-    ParticleSystem[] PS;
-
-    private void Awake()
-    {
-        PS = GetComponentsInChildren<ParticleSystem>();
-        ChangeColor();
-    }
-
-   
-
-    public Tone shieldColor;
-
-    private void Update()
-    {
-        chargeLevel += Time.deltaTime;
-        UiManager.instance.SetShieldLevel(chargeLevel / shieldRechargeTime);
-
-        if(Input.GetKeyDown(KeyCode.Space) &&isPlayer && chargeLevel>=1)
-        {
-            chargeLevel = 0;
-            SwitchShield();
-        }
-    }
-
-    private void SwitchShield()
-    {
-        switch (shieldColor)
-        {
-            case (Tone.Red): shieldColor = Tone.Green; UiManager.instance.SetShieldColor(Color.green); break;
-            case (Tone.Green): shieldColor = Tone.Blue; UiManager.instance.SetShieldColor(Color.blue); break;
-            case (Tone.Blue): shieldColor = Tone.Red; UiManager.instance.SetShieldColor(Color.red); break;
-        }
+	private void Awake()
+	{
+		PS = GetComponentsInChildren<ParticleSystem>();
+		this.AudioSource = this.GetComponent<AudioSource>();
+		ChangeColor();
+	}
 
 
-        ChangeColor();
-    }
 
-    public void ChangeColor()
-    {
-        switch (shieldColor)
-        {
-            case (Tone.Red):
-                {
-                    gameObject.layer = LayerMask.NameToLayer("RedShield");
-                    foreach (var particleSystem in PS)
-                    {
-                        particleSystem.startColor = Color.red;
-                    }
-                    break;
-                }
-            case (Tone.Green):
-                {
-                    gameObject.layer = LayerMask.NameToLayer("GreenShield");
-                    foreach (var particleSystem in PS)
-                    {
-                        particleSystem.startColor = Color.green;
-                    }
-                    break;
-                }
-            case (Tone.Blue):
-                {
-                    gameObject.layer = LayerMask.NameToLayer("BlueShield");
-                    foreach (var particleSystem in PS)
-                    {
-                        particleSystem.startColor = Color.blue;
-                    }
-                    break;
-                }
-        }
-    }
+	public Tone shieldColor;
+	private AudioSource AudioSource;
+
+	private void Update()
+	{
+		chargeLevel += Time.deltaTime;
+		UiManager.instance.SetShieldLevel(chargeLevel / shieldRechargeTime);
+
+		if (Input.GetKeyDown(KeyCode.Space) && isPlayer && chargeLevel >= 1)
+		{
+			chargeLevel = 0;
+			SwitchShield();
+		}
+	}
+
+	private void SwitchShield()
+	{
+		switch (shieldColor)
+		{
+			case (Tone.Red): shieldColor = Tone.Green; UiManager.instance.SetShieldColor(Color.green); break;
+			case (Tone.Green): shieldColor = Tone.Blue; UiManager.instance.SetShieldColor(Color.blue); break;
+			case (Tone.Blue): shieldColor = Tone.Red; UiManager.instance.SetShieldColor(Color.red); break;
+		}
 
 
+		ChangeColor();
+	}
+
+	public void ChangeColor()
+	{
+		switch (shieldColor)
+		{
+			case (Tone.Red):
+				{
+					gameObject.layer = LayerMask.NameToLayer("RedShield");
+					foreach (var particleSystem in PS)
+					{
+						particleSystem.startColor = Color.red;
+					}
+					break;
+				}
+			case (Tone.Green):
+				{
+					gameObject.layer = LayerMask.NameToLayer("GreenShield");
+					foreach (var particleSystem in PS)
+					{
+						particleSystem.startColor = Color.green;
+					}
+					break;
+				}
+			case (Tone.Blue):
+				{
+					gameObject.layer = LayerMask.NameToLayer("BlueShield");
+					foreach (var particleSystem in PS)
+					{
+						particleSystem.startColor = Color.blue;
+					}
+					break;
+				}
+		}
+	}
+
+	private void OnParticleCollision(GameObject other)
+	{
+		if (!this.AudioSource.isPlaying)
+			this.AudioSource.Play();
+	}
 }
