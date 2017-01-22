@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Core;
 
 public class Spawner : MonoBehaviour
 {
@@ -52,8 +53,8 @@ public class Spawner : MonoBehaviour
 	private IEnumerator SpawnPlayer()
 	{
 		this.AudioSource.Play();
-        //yield return new WaitForSeconds(this.AudioSource.clip.length);
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(this.AudioSource.clip.length);
+		Fader.Instance.UnFade();
 		this.player = this.PlayerTemplate.Create(this.GetPossiblePosition());
 		foreach (Transform child in player.transform)
 			child.parent = null;
@@ -84,13 +85,14 @@ public class Spawner : MonoBehaviour
 
 	public void Reload(float delay)
 	{
-		this.ReloadCoroutine(delay).Run();
+		this.StartCoroutine(this.ReloadCoroutine(delay));
 	}
 
 	private IEnumerator ReloadCoroutine(float delay)
 	{
 		Fader.Instance.Fade();
+		CoroutineFactory.StopAll();
 		yield return new WaitForSeconds(delay);
-		SceneManager.LoadSceneAsync("Main", LoadSceneMode.Single);
+		SceneManager.LoadScene("Main", LoadSceneMode.Single);
 	}
 }
