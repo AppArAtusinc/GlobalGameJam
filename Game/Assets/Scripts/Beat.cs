@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 public class Beat : MonoBehaviour {
@@ -51,10 +50,5 @@ public class Beat : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(frequency);
 		}
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
