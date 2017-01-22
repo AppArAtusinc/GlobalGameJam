@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
@@ -51,8 +52,9 @@ public class Spawner : MonoBehaviour
 	private IEnumerator SpawnPlayer()
 	{
 		this.AudioSource.Play();
-        //yield return new WaitForSeconds(this.AudioSource.clip.length);
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(this.AudioSource.clip.length);
+		Fader.Instance.UnFade();
+		GameObject.FindObjectOfType<Fader>().UnFade();
 		this.player = this.PlayerTemplate.Create(this.GetPossiblePosition());
 		foreach (Transform child in player.transform)
 			child.parent = null;
@@ -79,5 +81,17 @@ public class Spawner : MonoBehaviour
 	{
 		this.enimiesOnArena--;
 		enemy.OnDeath -= this.Enemy_OnDeath;
+	}
+
+	public void Reload(float delay)
+	{
+		this.ReloadCoroutine(delay).Run();
+	}
+
+	private IEnumerator ReloadCoroutine(float delay)
+	{
+		Fader.Instance.Fade();
+		yield return new WaitForSeconds(delay);
+		SceneManager.LoadSceneAsync("Main", LoadSceneMode.Single);
 	}
 }
