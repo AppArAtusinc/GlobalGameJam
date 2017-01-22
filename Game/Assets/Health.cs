@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Health : MonoBehaviour {
 
-    protected const float MAX_HEALTH = 100;
+    public float MAX_HEALTH = 100;
 
     protected float health;
 
