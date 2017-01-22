@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+	public GameObject PlayerTemplate;
 	public GameObject[] HardEnimies;
 	public GameObject[] NormalEnimies;
 	public GameObject[] EasyEnimies;
@@ -13,13 +14,16 @@ public class Spawner : MonoBehaviour
 	public int UseEasy;
 	public int UseNormal;
 	public int EnemyNumber;
-	private PlayerHealth player;
+
+	private GameObject player;
 	private int enimiesOnArena;
+	private AudioSource AudioSource;
 
 	private IEnumerator Start()
 	{
 		this.enimiesOnArena = 0;
-		this.player = GameObject.FindObjectOfType<PlayerHealth>();
+		this.AudioSource = this.GetComponent<AudioSource>();
+		yield return this.SpawnPlayer();
 
 		for (int i = 0; i < this.UseEasy; i++)
 		{
@@ -44,7 +48,17 @@ public class Spawner : MonoBehaviour
 		}
 	}
 
-	private void Spawn(GameObject enemyTemplate)
+	private IEnumerator SpawnPlayer()
+	{
+		this.AudioSource.Play();
+		yield return new WaitForSeconds(this.AudioSource.clip.length);
+
+		this.player = this.PlayerTemplate.Create(this.GetPossiblePosition());
+		foreach (Transform child in player.transform)
+			child.parent = null;
+	}
+
+	private void Spawn(GameObject template)
 	{
 		this.enimiesOnArena++;
 		var enimies = GameObject.FindObjectsOfType<EnemyHealth>();
@@ -52,7 +66,7 @@ public class Spawner : MonoBehaviour
 		while (Vector3.Distance(this.player.transform.position, position) < 3 || enimies.Any(o => Vector3.Distance(o.transform.position, position) < 2))
 			position = this.GetPossiblePosition();
 
-		var enemy = enemyTemplate.Create(position).GetComponentInChildren<EnemyHealth>();
+		var enemy = template.Create(position).GetComponentInChildren<EnemyHealth>();
 		enemy.OnDeath += this.Enemy_OnDeath;
 	}
 
